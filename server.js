@@ -12,16 +12,7 @@ const JWT_SECRET = process.env.JWT_SECRET || 'secret-key'; // Set your own secre
 app.use(bodyParser.json());
 
 // MongoDB connection
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true }, (error) => {
-  if (error) {
-    console.error('MongoDB connection error:', error);
-  } else {
-    // Start listening once the MongoDB connection is established
-    app.listen(PORT, () => {
-      console.log(`Server is running on http://localhost:${PORT}`);
-    });
-  }
-});
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // User model with hashed password
 const userSchema = new mongoose.Schema({
