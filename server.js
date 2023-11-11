@@ -11,7 +11,7 @@ const JWT_SECRET = process.env.JWT_SECRET || 'secret-key'; // Set your own secre
 
 // CORS middleware
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.header('Access-Control-Allow-Origin', 'https://user-dashboard-23.netlify.app');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();
@@ -90,7 +90,7 @@ app.post('/register', async (req, res) => {
     
 		// Automatically log in the user by generating a JWT token
     const token = jwt.sign({ userId: savedUser._id }, JWT_SECRET);
-    res.status(201).json({message: 'Login successful', userId: savedUser._id, token });
+    res.status(201).json({message: 'Register successful', userId: savedUser._id, token });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
