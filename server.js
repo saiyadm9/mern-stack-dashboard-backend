@@ -90,7 +90,7 @@ app.post('/register', async (req, res) => {
     
 		// Automatically log in the user by generating a JWT token
     const token = jwt.sign({ userId: savedUser._id }, JWT_SECRET);
-    res.status(201).json({ user: savedUser, token });
+    res.status(201).json({message: 'Login successful', userId: savedUser._id, token });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
@@ -115,7 +115,7 @@ app.post('/login', async (req, res) => {
     }
 
     const token = jwt.sign({ userId: user._id }, JWT_SECRET);
-    res.json({ message: 'Login successful', token });
+    res.json({ message: 'Login successful', userId: user._id, token });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
